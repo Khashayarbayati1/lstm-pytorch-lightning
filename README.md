@@ -50,7 +50,7 @@ Company A → `[0.0, 0.5, 0.25, 1.0]`
 Company B → `[1.0, 0.5, 0.25, 1.0]`
 
 **Labels:**
-Company A → `0.0`
+Company A → `0.0`  
 Company B → `1.0`
 
 ---
