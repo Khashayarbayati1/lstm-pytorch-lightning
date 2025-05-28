@@ -2,16 +2,17 @@
 
 This repository demonstrates two contrasting implementations of Long Short-Term Memory (LSTM) networks for time series modeling using PyTorch Lightning:
 
-- `LSTMbyHand.py`: A manual implementation that constructs each component of an LSTM cell step-by-step.
-- `LightningLSTM.py`: A standard implementation using PyTorch’s built-in `nn.LSTM`.
+- `manual_lstm_lightning.py`: A manual implementation that constructs each component of an LSTM cell step-by-step.
+- `pytorch_lstm_lightning.py`: A standard implementation using PyTorch’s built-in `nn.LSTM`.
 
-The models are trained on toy time series data inspired by [StatQuest's LSTM tutorial](https://www.youtube.com/StatQuest), with the goal of predicting the fifth-day value for two synthetic "companies".
+The models are trained on toy time series data inspired by [StatQuest's LSTM tutorial](https://www.youtube.com/watch?v=RHGiXPuo_pI&list=PLblh5JKOoLUIxGDQs4LFFD--41Vzf-ME1&index=31), with the goal of predicting the fifth-day value for two synthetic "companies".
 
 ---
 
 ## 🧠 Model Architectures
 
-### `LSTMbyHand.py`
+### `manual_lstm_lightning.py`
+
 - Fully manual LSTM logic
 - Custom parameters for:
   - Long-Term Memory Gate
@@ -19,13 +20,14 @@ The models are trained on toy time series data inspired by [StatQuest's LSTM tut
   - Output Gate
 - Implemented as a PyTorch Lightning `LightningModule`
 
-<p align="center">
-  <img src="images/LSTM_model.jpg" width="700" alt="Manual LSTM Diagram"/>
-</p>
+**Manual LSTM Diagram:**
 
-### `LightningLSTM.py`
+![Manual LSTM](images/LSTM_model.jpg)
+
+### `pytorch_lstm_lightning.py`
+
 - Uses PyTorch’s native `nn.LSTM` layer
-- Input shape reshaped to match `(seq_len, batch, input_size)`
+- Input reshaped to `(seq_len, batch, input_size)`
 - Only final output (`output[-1]`) is used for prediction
 
 ---
@@ -34,37 +36,38 @@ The models are trained on toy time series data inspired by [StatQuest's LSTM tut
 
 We use a toy dataset for two hypothetical companies:
 
-- **Company A:** Oscillating pattern, ends low
+- **Company A:** Oscillating pattern, ends low  
 - **Company B:** V-shaped recovery, ends high
 
-<p align="center">
-  <img src="images/company-a.png" width="300" alt="Company A"/>
-  <img src="images/company-b.png" width="300" alt="Company B"/>
-</p>
+**Company A Input Chart:**  
+![Company A](images/company-a.png)
 
-Input sequences:
-[0.0, 0.5, 0.25, 1.0]
+**Company B Input Chart:**  
+![Company B](images/company-b.png)
+
+**Input Sequences:**
+[0.0, 0.5, 0.25, 1.0]  
 [1.0, 0.5, 0.25, 1.0]
 
-Labels:
+**Labels:**
 0.0 (Company A), 1.0 (Company B)
 
-
 ---
-```
+
 ## 🗂 File Structure
+```
 ├── images/
 │ ├── LSTM_model.jpg # Manual LSTM diagram
 │ ├── company-a.png # Company A input chart
 │ ├── company-b.png # Company B input chart
-│ ├── LSTM_out_0.JPG # PyTorch LSTM output (label=0)
-│ ├── LSTM_out_1.JPG # PyTorch LSTM output (label=1)
-│ ├── LSTM_TrainLoss.JPG # PyTorch LSTM training loss
-│ ├── LSTMbyHand_out_0.JPG # Manual LSTM output (label=0)
-│ ├── LSTMbyHand_out_1.JPG # Manual LSTM output (label=1)
-│ ├── LSTMbyHand_TrainLoss.JPG # Manual LSTM training loss
+│ ├── p-lstm-out0.JPG # PyTorch LSTM output (label=0)
+│ ├── p-lstm-out1.JPG # PyTorch LSTM output (label=1)
+│ ├── p-lstm-TrainLoss.JPG # PyTorch LSTM training loss
+│ ├── m-lstm-out0.JPG # Manual LSTM output (label=0)
+│ ├── m-lstm-out1.JPG # Manual LSTM output (label=1)
+│ ├── m-lstm-TrainLoss.JPG # Manual LSTM training loss
 ├── manual_lstm_lightning.py # Manual LSTM implementation
-├── pytorch_lstm_lightning.py.py # PyTorch native LSTM implementation
+├── pytorch_lstm_lightning.py # PyTorch native LSTM implementation
 └── README.md
 ```
 
@@ -73,16 +76,14 @@ Labels:
 
 ## 🚀 How to Run
 
-Install required packages:
-
-```bash
+### 1. Install required packages:
 pip install torch lightning matplotlib seaborn tensorboard
 
-Then train each model:
-python LSTMbyHand.py
-python LightningLSTM.py
+### 2. Install required packages:
+python manual_lstm_lightning.py
+python pytorch_lstm_lightning.py
 
-View results:
+### 3. View results in TensorBoard:
 tensorboard --logdir=lightningLSTMbyHand_logs
 tensorboard --logdir=LightningLSTM_logs
 
@@ -92,13 +93,13 @@ tensorboard --logdir=LightningLSTM_logs
 
 | Label = 0 Output | Label = 1 Output | Training Loss |
 |------------------|------------------|----------------|
-| ![](images/LSTMbyHand_out_0.JPG) | ![](images/LSTMbyHand_out_1.JPG) | ![](images/LSTMbyHand_TrainLoss.JPG) |
+| ![](images/m-lstm-out0.JPG) | ![](images/m-lstm-out1.JPG) | ![](images/m-lstm-TrainLoss.JPG) |
 
 ### ⚙️ PyTorch LSTM
 
 | Label = 0 Output | Label = 1 Output | Training Loss |
 |------------------|------------------|----------------|
-| ![](images/LSTM_out_0.JPG) | ![](images/LSTM_out_1.JPG) | ![](images/LSTM_TrainLoss.JPG) |
+| ![](images/p-lstm-out0.JPG) | ![](images/p-lstm-out1.JPG) | ![](images/p-lstm-TrainLoss.JPG) |
 
 ## 📝 Credits
 
