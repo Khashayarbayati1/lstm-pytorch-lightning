@@ -45,7 +45,7 @@ We use a toy dataset for two hypothetical companies:
 **Company B Input Chart:**  
 ![Company B](images/company-b.png)
 
-**Input Sequences:** 
+**Input Sequences:**  
 Company A → `[0.0, 0.5, 0.25, 1.0]`  
 Company B → `[1.0, 0.5, 0.25, 1.0]`
 
@@ -58,15 +58,6 @@ Company B → `1.0`
 ## 🗂 File Structure
 ```
 ├── images/
-│ ├── LSTM_model.jpg # Manual LSTM diagram
-│ ├── company-a.png # Company A input chart
-│ ├── company-b.png # Company B input chart
-│ ├── p-lstm-out0.JPG # PyTorch LSTM output (label=0)
-│ ├── p-lstm-out1.JPG # PyTorch LSTM output (label=1)
-│ ├── p-lstm-TrainLoss.JPG # PyTorch LSTM training loss
-│ ├── m-lstm-out0.JPG # Manual LSTM output (label=0)
-│ ├── m-lstm-out1.JPG # Manual LSTM output (label=1)
-│ ├── m-lstm-TrainLoss.JPG # Manual LSTM training loss
 ├── manual_lstm_lightning.py # Manual LSTM implementation
 ├── pytorch_lstm_lightning.py # PyTorch native LSTM implementation
 └── README.md
@@ -78,15 +69,15 @@ Company B → `1.0`
 ## 🚀 How to Run
 
 ### 1. Install required packages:
-pip install torch lightning matplotlib seaborn tensorboard
+`pip install torch lightning matplotlib seaborn tensorboard`
 
 ### 2. Install required packages:
-python manual_lstm_lightning.py
-python pytorch_lstm_lightning.py
+`python manual_lstm_lightning.py`
+`python pytorch_lstm_lightning.py`
 
 ### 3. View results in TensorBoard:
-tensorboard --logdir=lightningLSTMbyHand_logs
-tensorboard --logdir=LightningLSTM_logs
+`tensorboard --logdir=lightningLSTMbyHand_logs`
+`tensorboard --logdir=LightningLSTM_logs`
 
 ## 📊 Sample Outputs
 
