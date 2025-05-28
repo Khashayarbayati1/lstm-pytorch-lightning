@@ -46,13 +46,12 @@ We use a toy dataset for two hypothetical companies:
 ![Company B](images/company-b.png)
 
 **Input Sequences:** 
-`[0.0, 0.5, 0.25, 1.0]`  
-`[1.0, 0.5, 0.25, 1.0]`
+Company A → `[0.0, 0.5, 0.25, 1.0]`  
+Company B → `[1.0, 0.5, 0.25, 1.0]`
 
 **Labels:**
-**Labels:**  
-`0.0` → Company A  
-`1.0` → Company B
+Company A → `0.0`
+Company B → `1.0`
 
 ---
 
