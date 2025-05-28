@@ -93,6 +93,12 @@ Company B → `1.0`
 |------------------|------------------|----------------|
 | ![](images/p-lstm-out0.JPG) | ![](images/p-lstm-out1.JPG) | ![](images/p-lstm-TrainLoss.JPG) |
 
+## 🔁 Training Behavior
+
+One of the advantages of using **PyTorch Lightning** is its built-in support for automatic checkpointing and resuming training from the last epoch. This behavior is demonstrated in the **Manual LSTM** outputs below, where different training runs are shown in distinct colors. Each color represents a continuation from a previously saved checkpoint, allowing training to seamlessly resume from the exact epoch it left off.
+
+Interestingly, the **PyTorch-native LSTM** required fewer epochs to converge in this toy example. This may be due to the built-in optimization of the `nn.LSTM` layer, which is more efficient and numerically stable than the manually constructed LSTM cell.
+
 ## 📝 Credits
 
 - Data and model concept based on [StatQuest's LSTM tutorial](https://www.youtube.com/watch?v=RHGiXPuo_pI&list=PLblh5JKOoLUIxGDQs4LFFD--41Vzf-ME1&index=31)
